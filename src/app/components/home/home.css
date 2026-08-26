@@ -1,0 +1,17 @@
+.main{
+  margin: 50px;
+  padding: 50px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.icon{
+  width:25%;
+  /* height:80px; */
+  float: left;
+  margin: 50px;
+  text-align: center;
+  flex: 1;
+  cursor: pointer; 
+}

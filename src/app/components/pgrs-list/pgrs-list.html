@@ -1,0 +1,55 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      respostas PGRS ({{ total_registros }})
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <button  (click)="importar(1)">
+      <mat-icon>upload_2</mat-icon>
+    </button>
+    <mat-form-field appearance="outline" style="float: left; width:100%;margin-top: 10px;">
+        <mat-label>Filtrar dados</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="filtrar" #input>
+    </mat-form-field>
+      <div style="height: 400px;overflow-y: auto;border:1px solid gray">
+        <table mat-table [dataSource]="data_source" matSort class="mat-elevation-z8" row-item-container-height="5">
+          <ng-container matColumnDef="area">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> área </th>
+            <td mat-cell *matCellDef="let element"> {{element.area}} </td>
+          </ng-container>
+          <ng-container matColumnDef="nome">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> nome </th>
+            <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+          </ng-container>
+          <ng-container matColumnDef="nome_completo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> nome completo </th>
+            <td mat-cell *matCellDef="let element"> {{element.nome_completo}} </td>
+          </ng-container>
+          <ng-container matColumnDef="hora_conclusao">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> data  </th>
+            <td mat-cell *matCellDef="let element"> {{element.hora_conclusao}} </td>
+          </ng-container>
+          <ng-container matColumnDef="anos">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> anos </th>
+            <td mat-cell *matCellDef="let element"> {{element.anos}} </td>
+          </ng-container>
+          <ng-container matColumnDef="pdf">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> pdf </th>
+            <td mat-cell *matCellDef="let element">
+              <button  (click)="show_pdf(element.id)">
+                <mat-icon>picture_as_pdf</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+          <tr mat-row *matRowDef="let row; columns: columns;"></tr> 
+        </table>
+      </div>
+      <div>
+        <div style="width:50%; float: left;">
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+        </div>
+      </div>
+  </mat-card-content>
+</mat-card>

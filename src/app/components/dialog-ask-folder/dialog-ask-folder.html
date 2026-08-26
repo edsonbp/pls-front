@@ -1,0 +1,16 @@
+<mat-dialog-content>
+    <!-- <mat-form-field> -->
+        <mat-label>
+            Diretório de algo
+        </mat-label>
+        <button mat-icon-button matPrefix (click)="f_input.click()">
+            <mat-icon>attach_file</mat-icon>
+        </button>
+    <!-- </mat-form-field> -->
+    <input type="file" webkitdirectory #f_input style="display: none;"
+    (change)="folderSelectEvent($event)"/>
+    <mat-dialog-actions>
+        <button matButton [mat-dialog-close]="null">Cancelar</button>
+        <button matButton (click)="close(true)" cdkFocusInitial>Sim</button>
+    </mat-dialog-actions>
+</mat-dialog-content>

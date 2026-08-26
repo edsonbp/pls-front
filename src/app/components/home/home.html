@@ -1,0 +1,64 @@
+<mat-form-field style="width: 100%" floatLabel="always">
+    <mat-label>
+        Diretório Prédios
+    </mat-label>
+    <input type="text" matInput [(ngModel)]="dir_predios" #ctrl="ngModel" cdkFocusInitial >
+</mat-form-field>
+<mat-form-field style="width: 100%" floatLabel="always">
+    <mat-label>
+        Diretório Áreas
+    </mat-label>
+    <input type="text" matInput [(ngModel)]="dir_areas" #ctrl="ngModel" >
+</mat-form-field>
+<mat-form-field style="width: 100%">
+    <mat-label>
+        Diretório Respostas do Pls
+    </mat-label>
+    <input type="text" matInput [(ngModel)]="dir_respostas_pls" #ctrl="ngModel">
+</mat-form-field>
+<mat-form-field style="width: 100%">
+    <mat-label>
+        Diretório Respostas do PGRS
+    </mat-label>
+    <input type="text" matInput [(ngModel)]="dir_respostas_pgrs" #ctrl="ngModel">
+</mat-form-field>
+<mat-form-field style="width: 100%">
+    <mat-label>
+        Diretório Pdf pgrs
+    </mat-label>
+    <input type="text" matInput [(ngModel)]="dir_pdf" #ctrl="ngModel">
+</mat-form-field>
+<div appearance="outlined" class="main">
+    <mat-card appearance="outlined" class="icon" (click)="toRoute('predios-list')">
+        <mat-card-content>
+            Prédios
+            <br>
+        </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined" class="icon" (click)="toRoute('area-list')">
+        <mat-card-content>
+            Áreas
+            <br>
+        </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined" class="icon" (click)="toRoute('indicadores-list')">
+        <mat-card-content>
+            Indicadores
+        </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined" class="icon" (click)="toRoute('respostas-list')">
+        <mat-card-content>
+            Respostas do PLS
+        </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined" class="icon" (click)="toRoute('pgrs-list')">
+        <mat-card-content>
+            Respostas do PGRS
+        </mat-card-content>
+    </mat-card>
+    <mat-card appearance="outlined" class="icon" (click)="toRoute('relatorio-pls')">
+        <mat-card-content>
+            Formulário PLS/CNJ
+        </mat-card-content>
+    </mat-card>
+</div>

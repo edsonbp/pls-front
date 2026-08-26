@@ -1,0 +1,469 @@
+<div class="top">
+    <form [formGroup]="formSelect">
+        <mat-form-field>
+          <mat-label>Selecione o mês:</mat-label>
+          <mat-select (selectionChange)="set('mes', $event)" formControlName="mes">
+            @for (mes of meses; track mes) {
+              <mat-option [value]="mes.ind">{{mes.mes}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;
+        <mat-form-field>
+          <mat-label>Selecione o ano:</mat-label>
+          <mat-select (selectionChange)="set('ano', $event)" formControlName="ano">
+            @for (ano of anos; track $index) {
+              <mat-option [value]="ano">{{ano}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        &nbsp;&nbsp;&nbsp;
+        <mat-form-field>
+          <mat-label>Teste:</mat-label>
+          <input matInput formControlName="teste">
+        </mat-form-field>
+    </form>
+</div>    
+<mat-accordion class="example-headers-align">
+
+    <!-- <mat-expansion-panel [expanded]="true" (opened)="setStep(0)"> -->
+    <mat-expansion-panel [expanded]="step() === 0" (opened)="setStep(0)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 1. Variáveis Gerais </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of variaveis_gerais; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 1" (opened)="setStep(1)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 2. Papel </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of papel; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel [expanded]="step() === 2" (opened)="setStep(2)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 3. Copos Descartáveis </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of copos_descartaveis; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel [expanded]="step() === 3" (opened)="setStep(3)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 4. Água Envasada em Embalagem Plástica </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of agua_envasada; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 4" (opened)="setStep(4)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 5. Impressão </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of impressao; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 5" (opened)="setStep(5)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 6. Energia Elétrica </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of energia_eletrica; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 6" (opened)="setStep(6)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 7. Água e Esgoto </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of agua_esgoto; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 7" (opened)="setStep(7)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 8. Gestão de Resíduos </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of gestao_residuos; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 8" (opened)="setStep(8)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 9. Reformas e Construções </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of reformas_constucoes; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 9" (opened)="setStep(9)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 9. Reformas e Construções </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of limpeza; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 10" (opened)="setStep(10)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 11. Vigilância </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of vigilancia; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 11" (opened)="setStep(11)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 12. Telefonia </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of telefonia; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 12" (opened)="setStep(12)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 13. Veículos </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of veiculos; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 13" (opened)="setStep(13)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 14. Combustível </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of combustivel; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 14" (opened)="setStep(14)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 15. Apoio ao Serviço Administrativo </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of apoio_administrativo; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 15" (opened)="setStep(15)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 16. Aquisições e Contratações </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of aquisicoes_contratacoes; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 16" (opened)="setStep(16)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 17. Qualidade de Vida </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of qualidade_vida; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 17" (opened)="setStep(17)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 18. Capacitação em Sustentabilidade </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of capacitacao_sustentabilidade; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 18" (opened)="setStep(18)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 19. Equidade e Diversidade </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of equidade_diversidade; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 19" (opened)="setStep(19)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 20. Programa "Justiça Carbono Zero" </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of carbono_zero; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 20" (opened)="setStep(20)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> Outros </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of outros; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step() === 21" (opened)="setStep(21)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> 21. Novas Tecnologias </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        @for(i of novas_tecnologias; track i.id){
+            <mat-form-field style="width: 100%;">
+                <mat-label>{{i.indicador}}</mat-label>
+                <input matInput id={{i.id}} value="{{i.total}}">
+                <button matIconButton matSuffix (click)="copy(i.id)">
+                    <mat-icon>assignment_add</mat-icon>
+                </button>
+            </mat-form-field>
+        }
+        <mat-action-row>
+            <button matButton (click)="prevStep()">Anterior</button>
+            <button matButton (click)="nextStep()">Próximo</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,26 @@
+/* Container to provide an outer border around the entire table */
+.mat-mdc-table {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-collapse: collapse; /* Essential for clean single-line borders */
+}
+
+/* Vertical lines: Add right borders to header and data cells */
+.mat-mdc-header-cell, 
+.mat-mdc-cell {
+  border-right: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Remove the right border from the last column to prevent double borders */
+.mat-mdc-header-cell:last-child, 
+.mat-mdc-cell:last-child {
+  border-right: none;
+}
+
+.container {
+  height: 400px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}

@@ -1,0 +1,37 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      lista de prédios
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <button style="margin-right: 3px;">
+      <mat-icon>add_box</mat-icon>
+    </button>
+    <button  (click)="importarPredios()">
+      <mat-icon>upload_2</mat-icon>
+    </button>
+    <mat-form-field appearance="outline" style="float: left; width:100%;margin-top: 10px;">
+        <mat-label>Filtrar dados</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="buscar uma área" #input>
+    </mat-form-field>
+    
+      <table mat-table [dataSource]="data_source" matSort class="mat-elevation-z8" row-item-container-height="5">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="predio">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> predio </th>
+          <td mat-cell *matCellDef="let element"> {{element.predio}} </td>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr> 
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+    </mat-card-content>
+  </mat-card>

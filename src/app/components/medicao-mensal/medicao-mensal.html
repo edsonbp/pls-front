@@ -1,0 +1,39 @@
+<table style="width: 100%;border: 1px solid white; border-collapse: collapse; text-align: center;" border="1">
+    <tr>
+        <td colspan="13">
+            Frequência de Medição: mensal &nbsp;&nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;&nbsp;
+            {{ unidade }}
+        </td>
+    </tr>
+    <tr>
+        <th>
+        </th>
+        <th *ngFor="let mes of meses">
+            {{mes.mes}}
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <strong>2023</strong>
+        </td>
+        <td *ngFor="let mes of meses">
+            100
+        </td>
+    </tr>
+    <tr>
+        <td>  
+            <strong>2024</strong>  
+        </td>
+        <td *ngFor="let mes of meses">
+            100
+        </td>
+    </tr>
+    <tr>
+        <td>   
+            <strong>2025</strong> 
+        </td>
+        <td *ngFor="let mes of meses">
+            100
+        </td>
+    </tr>
+</table>

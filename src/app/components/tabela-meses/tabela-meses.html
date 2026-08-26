@@ -1,0 +1,64 @@
+<form [formGroup]="form">
+    <div class="flex flex-col gap-1">
+
+        <table border="1" cellspacing="0" style="border-collapse: collapse;width:100%">
+            <tr class="borda">
+                <th>&nbsp;</th>
+                <!-- <th>
+                    <button (click)="patchValue()">*</button>
+                </th> -->
+                
+                @for(m of meses; track m.mes){
+                    <th class="borda">{{ m.sigla }}</th>
+                }
+                <th>TOTAL</th>
+            </tr>
+            <tr class="borda">
+                <td class="borda"><strong>{{ anos[0] }}</strong> </td>
+                @for(m of meses; track m.mes){
+                    <td class="borda">
+                        <input type="number" name="tabela_input_number" class="largura_td" id="{{ m.mes }}" 
+                        (input)="atualizarValor($event)" formControlName="{{ m.mes }}"
+                        (keydown)="corrigirNumero($event)" step=".001" min="0"
+                        />
+                    </td>
+                }
+                <td class="largura_td">
+                    {{ total1 }}
+                </td>
+            </tr> 
+            <tr class="borda" *ngIf="anos.length >= 2">
+                <td class="borda"><strong>{{ anos[1] }}</strong></td>
+                @for(m of meses; track m.mes){
+                    <td class="borda">
+                        <input type="number" name="tabela_input_number" id="{{ m.mes + 12 }}" class="largura_td" 
+                        (input)="atualizarValor($event)" formControlName="{{ m.mes + 12 }}"
+                        (keydown)="corrigirNumero($event)" step=".001" min="0"
+                        />
+                    </td>
+                }
+                <td class="largura_td">
+                    {{ total2 }}
+                </td>
+            </tr> 
+            
+            <tr class="borda" *ngIf="anos.length == 3">
+                <td class="borda"> <strong>{{ anos[2] }}</strong>  </td>
+                @for(m of meses; track m.mes){
+                    <td class="borda">
+                        <input type="number" name="tabela_input_number" id="{{ m.mes + 24 }}" class="largura_td" 
+                        (input)="atualizarValor($event)" formControlName="{{ m.mes + 24 }}"
+                        (keydown)="corrigirNumero($event)" step=".001" min="0"
+                        />
+                    </td>
+                }
+                <td class="largura_td">
+                    {{ total3 }}
+                </td>
+            </tr> 
+        </table>
+    </div>
+</form>
+
+
+
